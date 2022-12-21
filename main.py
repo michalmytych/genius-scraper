@@ -3,7 +3,7 @@ import sys
 import os
 import time
 
-from scrapers import GeniusScraper
+from src.scrapers import GeniusScraper
  
 output_file_path = "storage/"
 script_path = os.path.realpath(os.path.dirname(__file__))

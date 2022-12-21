@@ -2,8 +2,8 @@ import requests
 import re as regex
 from bs4 import BeautifulSoup
 
-from config import GeniusSongURL
-from exceptions import LyricsElementNotFoundException
+from src.config import GeniusSongURL
+from src.exceptions import LyricsElementNotFoundException
 
 class GeniusScraper:
   LYRICS_CONTAINER_CLASS_LIKE = 'Lyrics__Container'
