@@ -1,9 +1,9 @@
 class GeniusSongURL:
-  BASE_URL = "https://genius.com/songs/"
-  song_id = None
+  @staticmethod
+  def get_old_url(song_id):
+    return f"https://genius.com/songs/{song_id}?bagon=1"
 
-  def __init__(self, song_id):
-    self.song_id = str(song_id)
+  @staticmethod
+  def get_new_url(song_id):
+    return f"https://genius.com/songs/{song_id}"
 
-  def __str__(self):
-    return self.BASE_URL + self.song_id
