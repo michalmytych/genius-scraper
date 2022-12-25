@@ -22,6 +22,15 @@ def run_scraping(id = None):
   else:
       song_id = id
 
+  lyrics_file = script_path + '/' + output_file_path + str(song_id) + '.json'
+  already_scraped = os.path.isfile(lyrics_file)
+
+  if already_scraped:
+    scraped = ''
+    with open(lyrics_file, "r") as scraped_contents:
+      scraped = scraped_contents.read()
+    return scraped
+
   scraper = GeniusScraper(song_id)
   scraper.console_mode = True
 
@@ -40,9 +49,8 @@ def run_scraping(id = None):
   }
 
   lyrics_json = json.dumps(lyrics_data)
-  full_file_path = script_path + '/' + output_file_path + str(song_id) + '.json'
 
-  with open(full_file_path, "w") as output_file:
+  with open(lyrics_file, "w") as output_file:
     output_file.write(lyrics_json)
 
   return lyrics_json
