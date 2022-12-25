@@ -1,3 +1,3 @@
-# genius-scraper
+# robin
 
 Simple Genius lyrics scraper.
