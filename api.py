@@ -20,7 +20,7 @@ def index():
     if authorized(request): 
         args = request.args
         song_id = args.get("song_id")
-        if song_id is None:
+        if song_id is None or song_id == '':
             return json.dumps({
               "message": "You must provide ?song_id GET parameter."
             })
