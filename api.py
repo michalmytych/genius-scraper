@@ -7,12 +7,11 @@ import json
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['API_KEY'] = os.environ.get('API_KEY')
 
 def authorized(request):
-    return True
     try:
-      return request.headers['X-Api-Key'] == app.config['SECRET_KEY']
+      return request.headers['X-Api-Key'] == app.config['API_KEY']
     except:
       return False
 
