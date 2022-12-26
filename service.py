@@ -4,23 +4,10 @@ import os
 import time
 from src.scrapers import GeniusScraper
 
-def run_scraping(id = None):
-  output_file_path = "storage/cache/"
-  linesep = os.linesep
-  script_path = os.path.realpath(os.path.dirname(__file__))
-  opts = [opt for opt in sys.argv[1:] if opt.startswith("-")]
 
-  if '-cm' in opts:
-    try:
-      song_id = sys.argv[1]
-    except IndexError:
-      msg = f"{linesep}When launching script you should provide " \
-          + "song ID as command line argument." \
-          + f"like: {linesep} python3 main.py song_id {linesep}"
-      print(msg)
-      exit(-1)
-  else:
-      song_id = id
+def run_scraping(song_id = None):
+  output_file_path = "storage/cache/"
+  script_path = os.path.realpath(os.path.dirname(__file__))  
 
   lyrics_file = script_path + '/' + output_file_path + str(song_id) + '.json'
   already_scraped = os.path.isfile(lyrics_file)
@@ -56,3 +43,16 @@ def run_scraping(id = None):
   return lyrics_json
 
 
+linesep = os.linesep
+opts = [opt for opt in sys.argv[1:] if opt.startswith("-")]
+
+if '-cm' in opts:
+  try:
+    song_id = sys.argv[1]
+    run_scraping(song_id)
+  except IndexError:
+    msg = f"{linesep}When launching script you should provide " \
+        + "song ID as command line argument." \
+        + f"like: {linesep} python3 main.py song_id {linesep}"
+    print(msg)
+    exit(-1)
