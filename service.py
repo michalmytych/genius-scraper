@@ -5,7 +5,7 @@ import time
 from src.scrapers import GeniusScraper
 
 def run_scraping(id = None):
-  output_file_path = "storage/"
+  output_file_path = "storage/cache/"
   linesep = os.linesep
   script_path = os.path.realpath(os.path.dirname(__file__))
   opts = [opt for opt in sys.argv[1:] if opt.startswith("-")]
